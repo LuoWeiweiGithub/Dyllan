@@ -1,2 +1,2 @@
 # Dyllan
-# Ignore this project. Just used for backup my projects
+[![Gitter](https://badges.gitter.im/join Chat.svg)](https://gitter.im/LuoWeiweiGithub/Dyllan)
