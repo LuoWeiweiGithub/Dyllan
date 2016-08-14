@@ -47,6 +47,9 @@
     <Compile Include="Config\FileConfig.cs" />
     <Compile Include="Config\LogConfig.cs" />
     <Compile Include="Constant.cs" />
+    <Compile Include="Debug\MiniDumpType.cs" />
+    <Compile Include="Debug\MiniDumpWrite.cs" />
+    <Compile Include="Debug\MiniDumpWriterHelper.cs" />
     <Compile Include="ParameterChecker.cs" />
     <Compile Include="ProcessHelper.cs" />
     <Compile Include="Sort\HeapSort.cs" />
