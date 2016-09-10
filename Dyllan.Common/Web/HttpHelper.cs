@@ -125,7 +125,7 @@ namespace Dyllan.Common.Web
 
         public string GetString(HttpWebResponse response)
         {
-            string strResult = "";
+            StringBuilder strResult = new StringBuilder();
             try
             {
                 Stream receiveStream = response.GetResponseStream();
@@ -137,7 +137,7 @@ namespace Dyllan.Common.Web
                 while (count > 0)
                 {
                     var str = new String(read, 0, count);
-                    strResult += str;
+                    strResult.Append(str);
                     count = sr.Read(read, 0, 256);
                 }
             }
@@ -149,7 +149,66 @@ namespace Dyllan.Common.Web
                     response.Dispose();
                 }
             }
-            return strResult;
+            return strResult.ToString();
+        }
+
+        public void WriteToFile(string filePath, string url)
+        {
+            FileInfo fileInfo = new FileInfo(filePath);
+            if (!Directory.Exists(fileInfo.DirectoryName))
+            {
+                Directory.CreateDirectory(fileInfo.DirectoryName);
+            }
+
+            HttpWebResponse response = GetResponse(url);
+            try
+            {
+                Stream stream = response.GetResponseStream();
+                List<byte[]> content = new List<byte[]>();
+                long length = response.ContentLength;
+                
+                while (length > 8000)
+                {
+                    byte[] bytes = new byte[8000];
+                    ReadBytes(bytes, stream);
+                    content.Add(bytes);
+                    length -= 8000;
+                }
+
+                if (length > 0)
+                {
+                    byte[] bytes = new byte[length];
+                    ReadBytes(bytes, stream);
+                    content.Add(bytes);
+                }
+
+                using (StreamWriter sw = new StreamWriter(filePath, false))
+                {
+                    BinaryWriter bw = new BinaryWriter(sw.BaseStream);
+                    foreach (var b in content)
+                        bw.Write(b);
+                }
+            }
+            finally
+            {
+                if (response != null)
+                {
+                    response.Close();
+                    response.Dispose();
+                }
+            }
+        }
+
+        private void ReadBytes(byte[] container, Stream stream)
+        {
+            int length = container.Length;
+            int read = 0;
+            int count = stream.Read(container, 0, length);
+            while (count > 0)
+            {
+                read += count;
+                count = stream.Read(container, read, length - read);
+            }
         }
     }
 }

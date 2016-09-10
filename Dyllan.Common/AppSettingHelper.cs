@@ -101,5 +101,16 @@ namespace Dyllan.Common
             }
             return connectionString;
         }
+
+        public static void SetValue(string key, string value)
+        {
+            if (string.IsNullOrEmpty(key) || value == null)
+                return;
+
+            Configuration config = ConfigurationManager.OpenExeConfiguration(ConfigurationUserLevel.None);
+            config.AppSettings.Settings[key].Value = value;
+            config.Save(ConfigurationSaveMode.Modified, false);
+            ConfigurationManager.RefreshSection("appSettings");
+        }
     }
 }
