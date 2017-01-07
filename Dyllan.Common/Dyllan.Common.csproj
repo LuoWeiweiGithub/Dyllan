@@ -31,6 +31,9 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="NLog">
+      <HintPath>..\packages\NLog.4.3.4\lib\net45\NLog.dll</HintPath>
+    </Reference>
     <Reference Include="System" />
     <Reference Include="System.Configuration" />
     <Reference Include="System.Core" />
@@ -50,6 +53,8 @@
     <Compile Include="Debug\MiniDumpType.cs" />
     <Compile Include="Debug\MiniDumpWrite.cs" />
     <Compile Include="Debug\MiniDumpWriterHelper.cs" />
+    <Compile Include="DXmlSerializer\AbstractDXmlSerialize.cs" />
+    <Compile Include="DXmlSerializer\DXmlDeserializer.cs" />
     <Compile Include="ParameterChecker.cs" />
     <Compile Include="ProcessHelper.cs" />
     <Compile Include="Sort\HeapSort.cs" />
@@ -66,8 +71,14 @@
     <Compile Include="Utility\DbDataReaderHelper.cs" />
     <Compile Include="Utility\Log\Logger.cs" />
     <Compile Include="Utility\Log\TraceLogger.cs" />
+    <Compile Include="Utility\Utils.cs" />
     <Compile Include="Utility\XmlHelper.cs" />
     <Compile Include="Web\HttpHelper.cs" />
+    <Compile Include="Web\Spide\ISpider.cs" />
+    <Compile Include="Web\Spide\SpiderDirector.cs" />
+    <Compile Include="DXmlSerializer\Attribute\XmlIngoreAttribute.cs" />
+    <Compile Include="DXmlSerializer\Attribute\XmlNameAttribute.cs" />
+    <Compile Include="DXmlSerializer\DXmlSerializer.cs" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Exception\" />

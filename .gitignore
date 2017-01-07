@@ -1,4 +1,8 @@
 #################
+## Use Defined
+#################
+DOM/
+#################
 ## Eclipse
 #################
 
@@ -43,7 +47,7 @@ local.properties
 
 # Build results
 
-[Dd]ebug/
+# [Dd]ebug/
 [Rr]elease/
 x64/
 build/
@@ -77,6 +81,8 @@ build/
 *.pidb
 *.log
 *.scc
+*.dll
+*.pdb
 
 # Visual C++ cache files
 ipch/

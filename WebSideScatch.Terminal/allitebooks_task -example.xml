@@ -1,0 +1,36 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<TaskSetting _Id="f395b412fff44d60a58550300eb3bde0">
+  <Tasks _Id="b3b050dde8c449a9bf8ef7ce17b68f99">
+    <PageNumSpiderSetting _Id="6181e7e35911469bb40cbd3b4c696f11">
+      <FromNum>1</FromNum>
+      <ToNum>677</ToNum>
+      <UrlFormat>http://www.allitebooks.com/page/{0}/</UrlFormat>
+      <CheckExist>True</CheckExist>
+      <FetchRegex>href=\"http://www.allitebooks.com/[^\"]*/\"\s*rel=\"bookmark\"</FetchRegex>
+      <SavePath>E:\Web\Tasks\BookPage.txt</SavePath>
+      <TaskName>Get Book PageTask</TaskName>
+    </PageNumSpiderSetting>
+    <ReplaceTaskSetting _Id="341dbaebbc9640c1ada5a014ad77c872">
+      <KeyValuePairs _Id="1082f5e09f29474689308c063c2677c2">
+        <KeyValuePair _Id="bbc5225286da427ba82eb41ba73b4cd5">
+          <ReplaceRegex>href="</ReplaceRegex>
+          <Replacement></Replacement>
+        </KeyValuePair>
+        <KeyValuePair _Id="c4b1d5b9affa4e8a8671ea66048642ff">
+          <ReplaceRegex>\"\s*rel\s*=\s*\"bookmark\"</ReplaceRegex>
+          <Replacement></Replacement>
+        </KeyValuePair>
+      </KeyValuePairs>
+      <FilePath>E:\Web\Tasks\BookPage.txt</FilePath>
+      <SavePath>E:\Web\Tasks\BookPageLinks.txt</SavePath>
+      <TaskName>Remove Unnecessary Prefix And Postfix</TaskName>
+    </ReplaceTaskSetting>
+    <FileTaskSpiderSetting _Id="d76983eaacac43e6a00d21a6db7c9f78">
+      <TaskFilePath>E:\Web\Tasks\BookPageLinks.txt</TaskFilePath>
+      <SaveFilePath>E:\Web\Tasks\BookDownloadLinkRaw.txt</SaveFilePath>
+      <FetchRegex>href=\"http://file.allitebooks.com/[^\"]*\"</FetchRegex>
+      <TaskName>Get Book Download Link</TaskName>
+    </FileTaskSpiderSetting>
+  </Tasks>
+  <TaskName>allitebooks</TaskName>
+</TaskSetting>
